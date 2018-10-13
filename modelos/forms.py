@@ -11,3 +11,4 @@ class AuthorUpdate(UpdateView):
     model = Post
     fields = ['titulo','sub','description']
     template_name_suffix = '_update_form'
+    

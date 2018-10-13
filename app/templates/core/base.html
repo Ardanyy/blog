@@ -62,12 +62,18 @@
                     
                     {% endblock %} 
 			</div>
-			
+				
 				
 					<ul>
 						<li class="active"><a href="{% url 'inicio' %}" data-nav-section="home">Inicio</a></li>
 						<li class="active"><a href="{% url 'post' %}" data-nav-section="home">Publicaciones</a></li>
 						<li class="active"><a href="{% url 'create' %}" data-nav-section="create">Crear Nueva</a></li>
+						<li class="active"><a href="{% url 'borrador' %}" data-nav-section="create">Borradores</a></li>
+						{% if user.is_authenticated %}
+						<li class="active"><a href="{% url 'logout' %}" data-nav-section="create">Salir</a></li>
+						{% else %}
+						<li class="active"><a href="{% url 'login' %}" data-nav-section="create">Ingresar</a></li>
+						{% endif %}
 						
 					</ul>
 				
@@ -97,6 +103,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
 					   				<div class="slider-text-inner js-fullheight">
 					   					<div class="desc">
+											   
                                                 {% block inicio %} 
                                                 {% endblock %} 
                                         </div>

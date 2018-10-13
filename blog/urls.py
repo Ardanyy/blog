@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from app import views as vistas_app
 from modelos import views as vistas_modelos
+from django.conf.urls import include, url
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views 
 
 urlpatterns = [
     path("",vistas_app.inicio,name="inicio"),
@@ -24,6 +27,15 @@ urlpatterns = [
     path("publicaciones/<int:id>/",vistas_modelos.detalle, name="detalle"),
     path('admin/', admin.site.urls),
       path('create/',vistas_modelos.post_new,name="create"),
+       path('borradores/',vistas_modelos.borradores,name="borrador"),
      path("edit/<int:id>/",vistas_modelos.post_detalle,name="edit"),
+     path("publicar/<int:id>/",vistas_modelos.publicar,name="publicar"),
+     path("eliminar/<int:id>/",vistas_modelos.eliminar,name="eliminar"),
+     url(r'^login/$', views.login, name='login'),
+     url(r'^logout/$', views.logout, name='logout', kwargs={'next_page':'/'}),
+   
+     
+     
+    
 ]
 
